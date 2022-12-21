@@ -1,0 +1,19 @@
+<div class="container mt-3 p-5">
+  <div class="container grid-friends">
+    <% current_user.friends.each do |friend| %>
+      <div class="partners-roadtrip-core">
+        <%= cl_image_tag friend.photo.key, class: "avatar-no-partner-friends partner-margin", "data-user-id": friend.id%>
+        <div class="partners-roadtrips-infos">
+          <p> <%= friend.first_name %> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <form class="partners-form">
+    <input type="text" placeholder=" Entrez le nom" class="partners-form-text">
+    <input type="submit" value="Ajouter un ami" class="btn btn-danger text-white">
+  </form>
+</div>

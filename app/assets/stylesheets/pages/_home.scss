@@ -1,0 +1,261 @@
+// Specific CSS for your home-page
+.bgw{
+  background-color: white;
+}
+
+.contain-homepage{
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.banner{
+  background-image: radial-gradient(circle, rgba(242,242,242,0) 0%, rgba(0,0,0,1) 99%), asset-url('img-homepage.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Work Sans', sans-serif;
+  position: relative;
+}
+
+.title-banner h1{
+  font-size: 90px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.sous-titre{
+  font-size: 25px;
+  text-align: center;
+  color: white;
+}
+
+.letter{
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.trans{
+  width: 100vw;
+  background-color: #f4f4f4;
+  height: 100px;
+  transform: skew(3deg, -3deg);
+  position: absolute;
+  bottom: -52px;
+}
+// fin de la banner //
+
+// 4 cards sous la banner //
+.cards-contain{
+  margin-top: 130px;
+  margin-bottom: 160px;
+  display: flex;
+  justify-content: center;
+}
+
+.card{
+  width: 210px;
+  height: 221px;
+  display: flex;
+  align-items: center;
+  margin: 0 50px;
+  border: none;
+  background-color: #f4f4f4;
+} p{
+  text-align: center;
+}
+
+.card-link:hover{
+  text-decoration: none;
+}
+
+.card h3{
+  color: #84A98C;
+  margin-top: 12px;
+} i{
+  font-size: 35px;
+  color: black;
+}
+
+.descript-card{
+  color: black;
+  font-weight: bold;
+}
+// fin cards //
+
+// partie verte sous les cards //
+.ameuble{
+  height: 600px;
+  background-color: #52796F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.ameuble2{
+  height: 800px;
+  background-color: #52796F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.ameuble3{
+  background-color: #52796F;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.citation{
+  height: 110px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 300px;
+  font-family: 'Work Sans', sans-serif;
+}
+
+.trans2{
+  width: 100vw;
+  background-color: #52796F;
+  height: 100px;
+  transform: skew(3deg, -3deg);
+  position: absolute;
+  top: -48px;
+}
+
+.trans3{
+  width: 100vw;
+  background-color: white;
+  height: 100px;
+  transform: skew(3deg, 3deg);
+  position: absolute;
+  top: 43px;
+}
+
+.cards-hp{
+  width: 350px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 50px;
+  border: none;
+  background-color: #f4f4f4;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  color: black;
+  padding: 10px 0;
+  font-weight: bold;
+  font-family: 'Work Sans', sans-serif;
+  &:hover{
+    transform: scale(1.03);
+    transition: 0.3s;
+  }
+}
+
+.img-rd{
+  height: 83%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.title-rd{
+  margin: 5px;
+}
+.date-km{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.no-margin{
+  margin-bottom: 0;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.trans4{
+  width: 100vw;
+  background-color: white;
+  height: 100px;
+  transform: skew(3deg, 3deg);
+  position: absolute;
+  bottom: 47px;
+}
+
+.footer i{
+  margin: 0 10px;
+  color: white;
+}
+
+.footer p{
+  color: white;
+  font-weight: bold;
+}
+
+.text-hp {
+  color: #f4f4f4;
+  i {
+    color: #f4f4f4;
+  }
+}
+
+.card-category {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  width: 825px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: absolute;
+  bottom: 130px;
+} .btn-sign{
+  color: white;
+  background-color: rgba(245, 243, 243, 0.412);
+  font-weight: bold;
+  padding: 8px 16px;
+}
+
+.btn-sign:hover{
+  text-decoration: none;
+  color: white;
+  opacity: 0.7;
+  transition: 0.3s;
+}
+// fin partie verte //
+
+
+// media queries //
+
+@media(max-width: 992px) {
+  .cards-contain {
+    flex-wrap: wrap;
+  }
+  .title-banner h1{
+    font-size: 70px;
+    text-align: center;
+  }
+  .a-wrap{
+    font-size: 16px;
+  }
+}

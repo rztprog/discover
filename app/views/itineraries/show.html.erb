@@ -1,0 +1,53 @@
+<div class='container-show-map'>
+  <div class="one">
+
+    <div class="back-roadtrip">
+      <i class="fas fa-undo undo-show-map"></i>
+      <%= link_to "Retour au Roadtrip", roadtrip_path(@itinerary.roadtrip) %>
+    </div>
+
+    <div class="add-step">
+      <p>Ajoutez des étapes (maximum 5)</p>
+      <% if @itinerary.steps.count < 5 %>
+        <%= simple_form_for [@itinerary, @step] do |f|%>
+        <div class='form-show'>
+            <div>
+              <%= f.input :address, label:false, placeholder:'étape'%>
+            </div>
+            <div>
+              <%= f.submit 'Ajouter', class:'button-green-show-map'%>
+            </div>
+        </div>
+        <% end %>
+      <% else %>
+        <p class="text-secondary">Limite de 5 étapes atteinte</p>
+      <% end %>
+    </div>
+
+    <div class='steps'>
+      <h3>Etapes</h3>
+      <% @itinerary.steps.each do |step| %>
+        <div class='step'>
+          <i class="fas fa-map-marker-alt marker-show-map"></i>
+          <%= link_to step_path(step, itinerary:@itinerary.id), method: :delete do %>
+            <i class="fas fa-trash trash-show-map"></i>
+          <% end %>
+          <%= step.address.capitalize %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class='infos-itinerary'>
+      <h3>Informations de l'itinéraire</h3>
+      <hr>
+      <div data-distance=0 id='distance'><strong class='strong-show'>0</strong> Hrs</div>
+      <div data-duration=0 id='duration'><strong class='strong-show'>0</strong> Kms</div>
+    </div>
+  </div>
+
+  <div
+    id="map"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>

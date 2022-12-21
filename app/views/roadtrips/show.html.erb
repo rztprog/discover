@@ -1,0 +1,129 @@
+<div class="container-show-roadtrip">
+
+  <div class="mt-4 ml-5 back-roadtrip">
+    <i class="fas fa-undo undo-show-map"></i>
+    <%= link_to "Retour au Roadbooks", roadtrips_path %>
+  </div>
+
+  <div class="banner-show-trip">
+    <div class="title-show-map">
+      <h1 style="color:#52796E;font-weight: bold;"><%= image_tag "moto.png", class: "moto-show" %> <%= @roadtrip.title %> </h1>
+      <% if @roadtrip.start_date.present? %>
+      <p class="p-dates text-secondary"> Du <%= @roadtrip.start_date %> au <%= @roadtrip.end_date %></p>
+      <% end %>
+    </div>
+
+    <div class="card-map-avatars">
+      <% @roadtrip.users.each do |user| %>
+        <% if user.photo.present? %>
+          <%= cl_image_tag user.photo.key, class: "avatar-bordered-show  avatar-wrap" %>
+        <% else %>
+          <%= image_tag "default_user_image.png", class: ".avatar-bordered-show avatar-wrap" %>
+        <% end %>
+      <% end %>
+      <%add_partners = '<i class="fas fa-plus-circle text-danger" style="font-size: 50px"></i>'%>
+      <%= link_to add_partners.html_safe, new_roadtrip_partner_path(@roadtrip), class: "text-danger"%></p>
+    </div>
+  </div>
+
+  <div class="show-roadtrip-core">
+    <div class="roadtrip-itineraries">
+      <div class="roadtrip-itineraries-top-infos">
+      </div>
+      <div class="card-map-grid">
+        <% @roadtrip.itineraries.each do |itinerary| %>
+          <%= link_to itinerary_path(itinerary) do %>
+            <div class="card-map">
+              <div class="card-map-content">
+                <div class="card-map-top">
+                  <% if itinerary.steps[0] == nil %>
+                    <p>Ajouter des étapes</p>
+                  <% else %>
+                    <% if itinerary.steps.count > 1 %>
+                      <p>
+                        <%= itinerary.steps[0].address.split.first.delete_suffix(',') %>
+                        <i class="fas fa-long-arrow-alt-right ml-2 mr-2" style="font-size:18px;color:#808080;vertical-align:-2px;"></i>
+                        <%= itinerary.steps[-1].address.split.first.delete_suffix(',') %>
+                      </p>
+                    <% else %>
+                      <p class="d-flex justify-content-center">
+                        <%= itinerary.steps[0].address.split.first.delete_suffix(',') %>
+                      </p>
+                    <% end %>
+                  <% end %>
+                </div>
+                <% if itinerary.steps[0] == nil %>
+                  <img src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.398782,47.081012,2/500x300?access_token=pk.eyJ1IjoibmF0aGFuam9saXZldHdlYiIsImEiOiJja3JxOWJ5bnkya3RsMnVydjRybGJmaW80In0.MVD8QTxtS8nqAIHNQ3X_bg">
+                  <% else %>
+                    <% @coord = itinerary.steps %>
+                    <% @markers2 = @coord.map{ |marker| {lat: marker.latitude, lng: marker.longitude}} %>
+                    <div
+                      id="<%=dom_id(itinerary)%>"
+                      class="map2 <%= dom_id(itinerary)%>"
+                      data-selector= "<%=dom_id(itinerary)%>"
+                      data-markers="<%= @markers2.to_json %>"
+                      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+                    </div>
+                <% end %>
+              </div>
+
+              <div class="card-map-bottom">
+                <div class="card-map-bottom-left">
+                  <p><i class="fas fa-motorcycle mr-2"></i><%= itinerary.distance.to_i %> km</p>
+                </div>
+                <div class="car-map-center"><i class="fas fa-grip-lines-vertical"></i></div>
+                <div class="card-map-bottom-right">
+                  <p><i class="far fa-clock mr-2"></i><%= itinerary.duration.to_i %> heures</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @roadtrip.itineraries.size < 5  %>
+          <% if @roadtrip.itineraries.size.zero? || (@roadtrip.itineraries.last && @roadtrip.itineraries.last.steps.size >= 2) %>
+            <div class="card-map-add">
+              <% add_itinerary =  '<i class="fas fa-plus plus-fa"></i>' %>
+              <%= link_to add_itinerary.html_safe, roadtrip_itineraries_path(@roadtrip), method: :post %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div>
+      <div class="separation">
+      </div>
+    </div>
+
+    <div class="contain-checklist">
+      <div class="checklist-box background-white checkbox-wrap">
+        <h2 class="text-center" style="color:#808080;">Liste de tâches</h2>
+        <hr />
+        <div>
+          <% @roadtrip.tasks.each do |task| %>
+            <p class="checkbox">
+              <label class="containeur"><span class="ml-1"><%= task.content %></span>
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+              </label>
+              <%= link_to task_path(task), method: :delete, data: { confirm: "Are you sure you want to remove this task ?"} do %>
+                <i class="far fa-trash-alt fa-trash-size"></i>
+              <% end %>
+            </p>
+          <% end %>
+        </div>
+        <div>
+          <%= simple_form_for [ @roadtrip, @task ] do |f| %>
+          <div>
+            <div class="mt-1 simple-form-input">
+              <%= f.input :content, label: false %>
+              <%= f.submit "+" ,class: "btn button-green font-weight-bold" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

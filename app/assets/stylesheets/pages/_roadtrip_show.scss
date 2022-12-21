@@ -1,0 +1,78 @@
+.container-show-roadtrip {
+  padding: 0 0px;
+}
+.banner-show-trip {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 45px;
+  display: flex;
+  justify-content: start;
+}
+.title-show-map {
+  margin-right: auto;
+}
+.card-map-avatars {
+  margin-right: 80px;
+}
+.itineraries {
+  display: grid;
+  grid: 1fr 1fr;
+  width: 50%;
+}
+.show-roadtrip-core {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.roadtrip-itineraries-top-infos {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  h2{
+    padding: 0 26px;
+  }
+}
+.show-roadtrip-top {
+  display: flex;
+  justify-content: space-between;
+}
+.contain-checklist{
+  margin-left: 120px;
+  padding: 0 30px;
+}
+.separation{
+  height: 800px;
+  background-color: grey;
+  width: 3px;
+  margin-left: 70px;
+  position: absolute;
+}
+.title-dates{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  .p-dates{
+    color: rgba(0, 0, 0, 0.864);
+  }
+}
+.moto-show{
+  width: 42px;
+  margin-right: 5px;
+  vertical-align: -5px;
+}
+
+@media(max-width: 768px) {
+  .show-roadtrip-core{
+    display: flex;
+    flex-direction: column;
+  }
+  .avatar-wrap{
+    height: 40px;
+  }
+  .separation{
+    display: none;
+  }
+  .contain-checklist{
+    margin-left: -42px;
+  }
+}

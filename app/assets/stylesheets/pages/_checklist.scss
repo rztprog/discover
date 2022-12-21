@@ -1,0 +1,51 @@
+.checklist-box {
+  width: 400px;
+  margin-right: 24px;
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #CED4D9;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  p{
+    display: flex;
+    position: relative;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+    text-align: left;
+    padding-left: 16px;
+    font-size: 24px;
+    a{
+      position: absolute;
+      right: 16px;
+    }
+    span{
+      color: black;
+      padding-left: 16px;
+    }
+  }
+}
+.fa-trash-size{
+  font-size: 24px;
+  color: lightgray;
+}
+.simple-form-input{
+  position: relative;
+  input[type=text]{
+    height: 38px;
+    border-radius: 4px;
+  }
+  input[type=submit]{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 4px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+@media(max-width: 992px) {
+  .checklist-box{
+    width: 320px;
+  }
+}

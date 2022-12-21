@@ -1,0 +1,40 @@
+.partners-roadtrip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-content: center;
+}
+
+.partners-roadtrips-infos {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: $headers-font;
+}
+
+.partner-margin {
+  margin: 24px 0;
+}
+
+.partners-roadtrip-core {
+  position: relative;
+  text-align: center;
+  p {
+    text-align: center;
+    margin: 4px 12px;
+  }
+}
+
+.partners-form {
+  width: 100%;
+  padding-top: 80px;
+  padding-left: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.partners-form-text{
+  margin: 0 8px;
+  padding-top: 1px;
+  padding-bottom: 5px;
+  width: 30%;
+  font-size: 18px;
+}

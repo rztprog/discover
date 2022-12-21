@@ -1,0 +1,14 @@
+<% if receiver %>
+  <div class="message-box-content" id="message-<%= message.id %>">
+    <p>
+      <%= cl_image_tag message.user.photo.key, class: "avatar-bordered-small avatar-wrap" %>
+      <%= message.content %>
+    </p>
+  </div>
+<% else %>
+  <div class="message-box-content-currentuser" id="message-<%= message.id %>">
+    <p>
+      <%= message.content %>
+    </p>
+  </div>
+<% end %>

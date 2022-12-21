@@ -1,0 +1,19 @@
+.navbar-discover {
+  height: 10vh;
+  justify-content: space-between;
+  background: white;
+}
+
+.discover-nav-link:hover {
+  color: #84a98c !important;
+  cursor: pointer;
+}
+
+.navbar-discover .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-brand img {
+  width: 100px;
+  margin-left: 15px;
+}
